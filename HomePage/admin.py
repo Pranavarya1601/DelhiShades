@@ -26,7 +26,9 @@ class SubscriptionFields(admin.ModelAdmin):
 
 
 
-
+admin.site.site_header = "Delhi Shades Admin"
+admin.site.site_title = "Delhi Shades Admin Portal"
+admin.site.index_title = "Welcome to Delhi Shades Admin Portal"
 admin.site.register(UserProfileInfo,UserProfileInfoModel)
 admin.site.register(Blog,UserBlog)
 admin.site.register(BlogComment,BlogCommentField)

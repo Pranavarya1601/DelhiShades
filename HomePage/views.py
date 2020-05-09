@@ -380,7 +380,7 @@ def list_view_blog(request):
 	education_count = Blog.objects.all().filter(blog_category='Education',blog_published_status=True).count()
 	social_count = Blog.objects.all().filter(blog_category='Social Welfare',blog_published_status=True).count()
 	##################################################################################################
-	user_blog = Blog.objects.all().filter(user=request.user).order_by('-blog_post_date')
+	user_blog = Blog.objects.all().filter(user=request.user,blog_published_status=True).order_by('-blog_post_date')
 	paginator = Paginator(user_blog, 5) # Show 25 blog per page.
 	page_number = request.GET.get('page')
 	page_obj = paginator.get_page(page_number)
