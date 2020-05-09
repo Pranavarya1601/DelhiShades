@@ -1,0 +1,255 @@
+{% extends 'HomePage/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block body_block %}
+        
+    {% load static %}
+
+<div class="page-title wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2>{{author_details.username}}
+                    <small class="hidden-xs-down hidden-sm-down">
+                    {{author_details.userprofileinfo.user_rating}} blogger</small>
+                </h2>
+               
+            </div><!-- end col -->
+            <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'HomePage:home' %}">Home</a></li>
+                    <li class="breadcrumb-item">Blog</li>
+                    <li class="breadcrumb-item">Author</li>
+                    <li class="breadcrumb-item active">{{author_details.first_name}} {{author_details.last_name}}</li>
+                </ol>
+            </div><!-- end col -->                    
+        </div><!-- end row -->
+    </div><!-- end container -->
+</div><!-- end page-title -->
+
+  <section class="section wb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            <div class="custombox authorbox clearfix">
+                                <h4 class="small-title">About</h4>
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                        {% if author_details.userprofileinfo.user_profile_image %}
+                                        <img src="{{author_details.userprofileinfo.user_profile_image.url}}" alt="" class="img-fluid rounded-circle">
+                                            {% else %}
+                                            <img src="{% static 'HomePage/images/blank_user_image.png'%}" alt="" class="img-fluid rounded-circle">
+                                        {% endif %}
+                                    </div><!-- end col -->
+
+                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                        <h4>{{author_details.first_name}} {{author_details.last_name}}</h4>
+                                        <p>{{author_details.userprofileinfo.user_bio}}</p>
+                                        <div class="blog-meta big-meta col-md-8">
+                                            <small  data-toggle="tooltip" title="Category"> {{author_details.userprofileinfo.user_category}}</small>
+                                            <small data-toggle="tooltip" title="Rank">{{author_details.userprofileinfo.user_rating}}</small>
+                                            <small  data-toggle="tooltip" title="Blogger ID">{{author_details.userprofileinfo.user}}</small>
+
+                                        </div><!-- end meta -->
+                                        <hr>
+                                        <div class="post-sharing">
+                                            <ul class="list-inline">
+                                                <li><a href="#blogs" class="fb-button btn btn-primary" data-toggle="tooltip" title="Posts"><i class="fas fa-blog"></i><span class="down-mobile">{{post_counts}}</span></a></li>
+                                              <li><a href="{% url 'HomePage:user_subscriber_list' author_details.id  %}" class="fb-button btn btn-primary"  data-toggle="tooltip" title="Followers"><i class="fas fa-users"></i><span class="down-mobile">{{follower_counter}}</span></a></li>
+                                              <li><a href="{% url 'HomePage:user_subscription_list' author_details.id  %}" class="fb-button btn btn-primary"  data-toggle="tooltip" title="Followings"><i class="far fa-newspaper"></i><span class="down-mobile">{{followering_counter}}</span></a></li>
+                                               
+                                            </ul>
+                                        </div>
+                                            
+                                            <hr>
+                                        <div class="topsocial">
+                                                {% if author_details.userprofileinfo.facebook_link %}
+                                                <a href="{{author_details.userprofileinfo.facebook_link.url}}" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                                {% endif %}
+                                                {% if author_details.userprofileinfo.youtube_link %}
+                                                <a href="{{author_details.userprofileinfo.youtube_link.url}}" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
+                                                {% endif %}
+                                                {% if author_details.userprofileinfo.twitter_link %}
+                                                <a href="{{author_details.userprofileinfo.twitter_link.url}}" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                                {% endif %}
+                                                {% if author_details.userprofileinfo.instagram_link %}
+                                                <a href="{{author_details.userprofileinfo.instagram_link.url}}" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                                                {% endif %}
+                                                {% if author_details.userprofileinfo.website_link %}
+                                                <a href="{{author_details.userprofileinfo.website_link.url}}" data-toggle="tooltip" data-placement="bottom" title="Website"><i class="fa fa-link"></i></a>
+
+
+                                                {% endif %}
+                                        </div><!-- end social -->
+                                        <hr>
+                                    {% if user.is_authenticated %} 
+                                    {% if data in subscribed_id %}
+                                    <a href="{% url 'HomePage:author_unfollow' subscription_id  %}"><button type="submit" class="btn btn-primary"><i class="far fa-share-square"></i> Unsubscribe!</button></a>
+
+                                    {% else %}
+                                    <form class="form-wrapper" method="POST">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="creator" value = "{{user.id}}" placeholder="">
+                                        <input type="hidden" name="subscribe" value="{{author_details.userprofileinfo.user.id}}" placeholder="">
+                                        <button type="submit" class="btn btn-primary"><i class="far fa-share-square"></i> Subscribe!</button>
+                                    </form>
+                                    {% endif %}
+                                   
+                                    {%endif%}
+                                        
+                                       
+                                    </div><!-- end col -->
+                                </div><!-- end row -->
+                            </div><!-- end author-box -->
+                            <hr class="invis">
+
+                            <div class="page-wrapper" id="blogs">
+                            <div class="blog-list clearfix">
+                                {% if user_blog %}
+                                {% for blog in page_obj %}
+                                <div class="blog-box row">
+
+                                    <div class="col-md-4">
+                                        <div class="post-media">
+                                          {% if blog.blog_photo_1 %}
+                                            <a href="{% url 'HomePage:detail_blog' blog.id %}" title="">
+                                                <img src="{{blog.blog_photo_1.url}}" alt="" class="img-fluid" style="width:100%;height: 200px;">
+                                            </a>
+                                          {% endif %}
+                                        </div><!-- end media --><hr class="invis">
+                                    </div><!-- end col -->
+                                    <div class="blog-meta big-meta col-md-8">
+                                        <h4>{{blog.blog_heading|slice:":40"|safe}}</h4>
+                                        <p>{{blog.blog_paragraph_1|slice:":100"|safe}} ...</p>
+                                        <small>{{blog.blog_category}}</small>
+                                        <small>{{blog.blog_post_date}}</small>
+                                        <small>{{blog.user.first_name}}</small><hr class="invis">
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Oops, looks like you don't have a blog post!</p>
+                                {% endif %}
+                           </div><!-- end blog-list -->
+                        </div><!-- end page-wrapper -->
+                        </div><!-- end page-wrapper -->
+
+                       
+                        <hr class="invis">
+
+                       <div class="row">
+                            <div class="col-md-12">
+                              <div class="pagination">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination justify-content-start">
+                                      
+                                      {% if page_obj.has_previous %}
+                                        <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                                      {% endif %}&nbsp;
+                                      <span style=" display: inline-flex; align-items: center; font-size: 10px;font-weight: bold;">
+                                           &nbsp;Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                                      </span>
+                                       {% if page_obj.has_next %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+                                        <li class="page-item">
+                                             <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div><!-- end col -->
+                          </div><!-- end pagination -->
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <h2 class="widget-title">Search</h2>
+                                <form class="form-inline search-form">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search on the site">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Recent Posts</h2>
+                                <div class="blog-list-widget">
+                                    <div class="list-group">
+                                        {% if recent_data %}
+                                        {% for posts in recent_data %}
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid float-left">
+                                            <h5 class="mb-1">{{posts.blog_heading|slice:":35"|safe}}...</h5>
+                                            <small>{{posts.blog_post_date}} by {{posts.user}}</small>
+                                            </div>
+                                        </a>
+                                        {% endfor %}
+                                        {% else %}
+                                        <p>Data not found!</p>
+                                        {% endif %}
+                                    </div>
+                                </div><!-- end blog-list -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Advertising</h2>
+                                <div class="banner-spot clearfix">
+                                    <div class="banner-img">
+                                    {% if right_advertisement %}
+                                              {% for ad in right_advertisement %}
+                                              {% if forloop.counter == 1 %}
+                                              <a href="{{ad.ad_link}}"><img src="{{ad.ad_image.url}}" alt="" class="img-fluid"></a>
+                                              {% endif %}
+                                              {% endfor %}
+                                              {% else %}
+                                              <p>Data not found!</p>
+                                              {% endif %}
+                                    </div><!-- end banner-img -->
+                                </div><!-- end banner -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Popular Categories</h2>
+                                <div class="link-widget">
+                                    <ul>
+                                    <li><a href="{% url 'HomePage:delhi_shades_list' %}">Delhi Shades <span>{{delhi_shades_count}}</span></a></li>
+                                    <li><a href="#">Fashion <span>{{fashion_count}}</span></a></li>
+                                    <li><a href="#">Food <span>{{food_count}}</span></a></li>
+                                    <li><a href="#">Travel <span>{{travel_count}}</span></a></li>
+                                    <li><a href="#">Health and Fitness <span>{{healthfitness_count}}</span></a></li>
+                                    <li><a href="#">Shopping <span>{{shopping_count}}</span></a></li>
+                                    <li><a href="#">Education <span>{{education_count}}</span></a></li>
+                                    <li><a href="#">Social Responsibility <span>{{social_count}}</span></a></li>
+                                    </ul>
+                                </div><!-- end link-widget -->
+                            </div><!-- end widget -->
+
+
+                            <div class="widget">
+                                <h2 class="widget-title">Instagram Feed</h2>
+                                <div class="instagram-wrapper clearfix">
+                                    <a class="" href="#"><img src="{% static 'HomePage/upload/insta_01.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_02.jpeg'%}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_03.jpeg' %} " alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_04.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_05.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_06.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_07.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_08.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_09.jpeg' %}" alt="" class="img-fluid"></a>
+                                </div><!-- end Instagram wrapper -->
+                            </div><!-- end widget -->
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+ {% endblock %}

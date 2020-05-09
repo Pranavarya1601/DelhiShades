@@ -1,0 +1,145 @@
+{% extends 'HomePage/base_login.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block body_block %}
+        
+    {% load static %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          
+            {% if registered %}
+            <h4 class="card-title text-center">Welcome to Delhi Shades</h4><br>
+            <div align="center" class="form-group">
+            <img src="{% static 'HomePage/images/welcome.jpg' %}" alt="" class="img-fluid">
+          
+            <hr class="my-4">
+              <h4>Thank you for registration</h4>
+              <p><strong> Hello and Welcome to Delhi Shades, a personal blog dedicated to the beauty and awesomeness of Delhi.Our vision is a shared society, in a culture of respect among all individuals and identities.</strong></p>
+              <a href="{% url 'HomePage:login' %}" class="fb-button btn btn-primary"><span class="down-mobile">Sign in</span></a>
+
+            </div>
+            
+            {% else %}
+            <h4 class="card-title text-center">Create your account</h4><br>
+            <form class="form-wrapper" method="POST" enctype="multipart/form-data">
+              {%csrf_token%}
+              
+  <!--          {{user_form.as_p}}
+            {{profile_form.as_p}}   -->
+                  <div class="form-group">
+                    {{ user_form.username.errors }}
+                    <label for="{{ user_form.username.id_for_label }}"><strong> User Name:</strong></label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter user name" required>
+                  </div>
+                  <div class="form-group">
+                    {{ user_form.email.errors }}
+                    <label for="{{ user_form.email.id_for_label }}"><strong> User Email:</strong></label>
+                    <input type="email" class="form-control" name="email" id="email"
+                    placeholder="Enter user email address" required>
+                  </div>
+                  <div class="form-group">
+                    {{ user_form.password.errors }}
+                     <label for="{{ user_form.password.id_for_label }}"><strong> User Password::</strong></label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter user password" required>
+                  </div>
+                  <div class="form-group">
+                    {{ user_form.first_name.errors }}
+                     <label for="{{ user_form.first_name.id_for_label }}"><strong> First Name:</strong></label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter first name" required>
+                  </div>
+                  <div class="form-group">
+                   {{ user_form.last_name.errors }}
+                    <label for="{{ user_form.last_name.id_for_label }}"><strong> Surname:</strong></label>
+                    <input type="text" class="form-control" name="last_name" id="last_name"
+                    placeholder="Enter surname" required>
+                  </div>
+                  <div class="form-group">
+                    {{ profile_form.user_gender.errors }}
+                    <label for="{{ profile_form.user_gender.id_for_label }}"><strong> Gender:</strong></label>
+                    <select class="form-control" name="user_gender" id="user_gender" required>
+                      <option value="----------">----------</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    {{ profile_form.user_age.errors }}
+                    <label for="{{ profile_form.user_age.id_for_label }}"><strong> Age:</strong></label>
+                    <input type="date" class="form-control" name="user_age" id="user_age"
+                    placeholder="Enter date of birth" required>
+                  </div>
+                  <div class="form-group">
+                    {{ profile_form.user_rating.errors }}
+                    <label for="{{ profile_form.user_rating.id_for_label }}"><strong> Rating:</strong></label>
+                    <input type="text" class="form-control" name="user_rating" id="user_rating" value="Bronze" disabled >
+                  </div>
+                  <div class="form-group">
+                    {{ profile_form.user_bio.errors }}
+                    <label for="{{ profile_form.user_bio.id_for_label }}"><strong> Bio:</strong></label>
+                    <textarea class="form-control" name="user_bio" id="user_bio" placeholder="Write your bio here...." required></textarea>
+                  </div>
+                  <div class="form-group">
+                    {{ profile_form.user_category.errors }}
+                    <label for="{{ profile_form.user_category.id_for_label }}"><strong> Blog Category:</strong></label>
+                    <select class="form-control" name="user_category" id="user_category" required>
+                        <option value="----------">----------</option>
+                        <option value="Books">Books</option>
+                        <option value="Event & Entertainment">Event & Entertainment</option>
+                        <option value="Education">Education</option>
+                        <option value="Food">Food</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Health">Health</option>
+                        <option value="Kids">Kids</option>
+                        <option value="News">News</option>
+                        <option value="Computer Programming">Computer Programming</option>
+                        <option value="Politics">Politics</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Social Welfare">Social Welfare</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Others">Others</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <!-- dnt forget to add request.FILES in the request form else image will be posted blank -->
+                    {{ profile_form.user_profile_image.errors }}
+                    <label for="{{ profile_form.user_profile_image.id_for_label }}"><strong> Profile Image:</strong></label>
+                    <input type="file" class="form-control" name="user_profile_image" id="user_profile_image">
+                  </div>
+                  <div class="form-group">
+                    <input type="Submit" class="btn btn-lg btn-primary btn-block" value="Register">
+                  </div>
+            </form>
+            {% endif %}
+            </dir>
+
+
+
+              <hr class="my-4">
+              <div align="center">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook fa-2x" aria-hidden="true" c></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter fa-2x" aria-hidden="true" style=" margin-left: 30px;"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-linkedin fa-2x" aria-hidden="true" style=" margin-left: 30px;"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus  fa-2x" aria-hidden="true" style=" margin-left: 30px;"></i></a>
+             </div><!-- end social -->
+
+             <hr class="my-4">
+             <div align="center">
+               <p><font size="1">By creating an account, you agree to the <span style="color:#3197d6">Terms of Service</span>. For more information about Delhi Shades privacy practices, see the <span style="color:#3197d6">Delhi Shades Privacy Statement</span>. We'll occasionally send you account-related emails.</font></p>
+             </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ {% endblock %}

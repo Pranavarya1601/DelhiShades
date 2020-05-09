@@ -1,0 +1,233 @@
+{% extends 'HomePage/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block body_block %}
+        
+    {% load static %}
+    <div class="page-title wb">
+      <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <h2><i class="fa fa-user"></i> Author by {{user.first_name}} {{user.last_name}} <small class="hidden-xs-down hidden-sm-down"> Ace Blogger</small></h2>
+                    </div><!-- end col -->
+                    <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                            <li class="breadcrumb-item active">{{user.first_name}} </li>
+                        </ol>
+                    </div><!-- end col -->                    
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end page-title -->
+
+        <section class="section wb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            <div class="custombox authorbox clearfix">
+                                {% if author_info %}
+                                {% for blog in author_info %} 
+                                <h4 class="small-title">About</h4>
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                        <img src="{{blog.user_profile_image.url}}" alt="" class="img-fluid rounded" style="width:100px; height:100px;"> 
+                                    </div><!-- end col -->
+
+
+                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                        <div class="profile-head">
+                                               
+                                            <div class="blog-meta big-meta col-md-8">
+                                                   <h4>{{blog.user.first_name}} {{blog.user.last_name}}</h4>
+                                             </div><hr>
+                                               
+                                        </div>
+
+
+                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><!-- Profile box -->
+                                        
+                                                <!-- About -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> User Id : </b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{blog.user.username}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Blogger Name : </b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{blog.user.first_name}} {{blog.user.last_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Email : </b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{blog.user.email}}</p>
+                                                        </div>
+                                                    </div>
+                                                   <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Gender : </b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{blog.user_gender}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Date of birth : </b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{blog.user_age}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Blogger Rank : </b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{blog.user_rating}} Blogger</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Number of Posts : </b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{post_counts}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Blogger Category :</b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{blog.user_category}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Bio : </b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>{{blog.user_bio}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label><b> Status :</b></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p><span style="color: green"><b>Active</b></span> ({{blog.user_update_date}})</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <a href="{% url 'HomePage:user_profile_info_update' blog.id %}" data-toggle="tooltip" data-placement="bottom" title=""><i class="fas fa-user-edit"></i> Edit Profile</i></a>
+                                </div><!-- end Profile box -->
+                            {% endfor %}
+                            {% else %}
+                            <p>Oops, somthing bad happens!</p>
+                            {% endif %}
+                            </div><!-- end author-box -->
+                        </div>
+                    </div>
+
+
+
+
+                            <hr class="invis1">
+
+
+                            </div><!-- end blog-custom-build -->
+                        </div><!-- end page-wrapper -->
+
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <h2 class="widget-title">Search</h2>
+                                <form class="form-inline search-form">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search on the site">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Recent Posts</h2>
+                                <div class="blog-list-widget">
+                                    <div class="list-group">
+                                        {% if recent_data %}
+                                        {% for posts in recent_data %}
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid float-left">
+                                            <h5 class="mb-1">{{posts.blog_heading|slice:":35"|safe}}...</h5>
+                                            <small>{{posts.blog_post_date}} by {{posts.user}}</small>
+                                            </div>
+                                        </a>
+                                        {% endfor %}
+                                        {% else %}
+                                        <p>Data not found!</p>
+                                        {% endif %}
+                                    </div>
+                                </div><!-- end blog-list -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Advertising</h2>
+                                <div class="banner-spot clearfix">
+                                    <div class="banner-img">
+                                        <img src="{% static 'HomePage/upload/banner_03.jpg' %} " alt="" class="img-fluid">
+                                    </div><!-- end banner-img -->
+                                </div><!-- end banner -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Popular Categories</h2>
+                                <div class="link-widget">
+                                    <ul>
+                                    <li><a href="{% url 'HomePage:delhi_shades_list' %}">Delhi Shades <span>{{delhi_shades_count}}</span></a></li>
+                                    <li><a href="#">Lifestyle <span>{{fashion_count}}</span></a></li>
+                                    <li><a href="#">Art & Design <span>{{food_count}}</span></a></li>
+                                    <li><a href="#">Health Beauty <span>{{travel_count}}</span></a></li>
+                                    <li><a href="#">Clothing <span>{{healthfitness_count}}</span></a></li>
+                                    <li><a href="#">Entertaintment <span>{{shopping_count}}</span></a></li>
+                                    <li><a href="#">Food & Drink <span>{{education_count}}</span></a></li>
+                                    <li><a href="#">Food & Drink <span>{{social_count}}</span></a></li>
+                                    </ul>
+                                </div><!-- end link-widget -->
+                            </div><!-- end widget -->
+
+
+                            <div class="widget">
+                                <h2 class="widget-title">Instagram Feed</h2>
+                                <div class="instagram-wrapper clearfix">
+                                    <a class="" href="#"><img src="{% static 'HomePage/upload/insta_01.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_02.jpeg'%}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_03.jpeg' %} " alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_04.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_05.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_06.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_07.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_08.jpeg' %}" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="{% static 'HomePage/upload/insta_09.jpeg' %}" alt="" class="img-fluid"></a>
+                                </div><!-- end Instagram wrapper -->
+                            </div><!-- end widget -->
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+ {% endblock %}

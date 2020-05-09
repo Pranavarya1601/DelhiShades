@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Site Metas -->
+    <title>Delhi Shades</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% load static %}
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'HomePage/images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% static 'HomePage/images/apple-touch-icon.png' %}">
+    
+    <!-- Design fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,500,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/949f368253.js" crossorigin="anonymous">
+    </script> 
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'HomePage/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- FontAwesome Icons core CSS -->
+    <link href="{% static 'HomePage/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'HomePage/css/style.css' %}" rel="stylesheet">
+
+    <!-- Responsive styles for this template -->
+    <link href="{% static 'HomePage/css/responsive.css' %}" rel="stylesheet">
+
+    <!-- Colors for this template -->
+    <link href="{% static 'HomePage/css/colors.css' %}" rel="stylesheet">
+    
+    <!-- Css for MediumEditor -->
+    <script src="{% static 'HomePage/js/medium-editor.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'HomePage/css/medium-editor.min.css' %}" type="text/css" media="screen" charset="utf-8">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="preloader">
+        <img class="preloader" src="{% static 'HomePage/images/loader.gif' %}" alt="">
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+
+    <div id="wrapper">
+        <div class="collapse top-search" id="collapseExample">
+            <div class="card card-block">
+                <div class="newsletter-widget text-center">
+                    <form class="form-inline">
+                        <input type="text" class="form-control" placeholder="What you are looking for?">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </form>
+                </div><!-- end newsletter -->
+            </div>
+        </div><!-- end top-search -->
+
+        <div class="topbar-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs-down">
+                        <div class="topsocial">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Flickr"><i class="fa fa-flickr"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
+                        </div><!-- end social -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 hidden-md-down">
+                        <div class="topmenu text-center">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a href="blog-category-01.html"><i class="fa fa-star"></i> Trends</a></li>
+                                <li class="list-inline-item"><a href="blog-category-02.html"><i class="fa fa-bolt"></i> Hot Topics</a></li>
+                                <li class="list-inline-item"><a href="{% url 'HomePage:about_us'%}"><i class="fa fa-user-circle-o"></i> Write for us</a></li>
+                            </ul><!-- end ul -->
+                        </div><!-- end topmenu -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="topsearch text-right">
+                            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i> Search</a>
+                        </div><!-- end search -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end topbar -->
+
+        <div class="header-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="{% url 'HomePage:home' %}"><img src="{% static 'HomePage/images/logo.jpg' %}" alt=""></a>
+                        </div><!-- end logo -->
+                    </div>
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end header -->
+
+        <header class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-toggleable-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link color-pink-hover" href="{% url 'HomePage:home'%}">Home</a>
+                            </li>
+                            <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delhi Shades</a>
+                                <ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">
+                                    <li>
+                                        <div class="mega-menu-content clearfix">
+                                            <div class="tab">
+                                                <button class="tablinks active" onclick="openCategory(event, 'cat01')">Event</button>
+                                                <button class="tablinks" onclick="openCategory(event, 'cat02')">Delhi Diary</button>
+                                                <button class="tablinks" onclick="openCategory(event, 'cat03')">History</buttn>
+                                                <button class="tablinks" onclick="openCategory(event, 'cat04')">Architecture</button>
+                                                <button class="tablinks" onclick="openCategory(event, 'cat05')">Places</button>
+                                            </div>
+
+                                                                                        <div class="tab-details clearfix">
+                                                <div id="cat01" class="tabcontent active">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_shades_event %}
+                                                                {% for posts in delhi_shades_event %}
+                                                                {% if forloop.counter == 1%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_shades_event %}
+                                                                {% for posts in delhi_shades_event %}
+                                                                {% if forloop.counter == 2%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_shades_event %}
+                                                                {% for posts in delhi_shades_event %}
+                                                                {% if forloop.counter == 3%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:delhi_events_list' %}" class="fb-button btn btn-primary"><i class="fas fa-blog"></i> <span class="down-mobile">Read more..</span></a>
+                                                                </div><!-- end media -->
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+                                                    </div><!-- end row -->
+                                                </div>
+                                                <div id="cat02" class="tabcontent">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_diary %}
+                                                                {% for posts in delhi_diary %}
+                                                                {% if forloop.counter == 1%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_diary %}
+                                                                {% for posts in delhi_diary %}
+                                                                {% if forloop.counter == 2%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_diary %}
+                                                                {% for posts in delhi_diary %}
+                                                                {% if forloop.counter == 3%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:delhi_diary_list' %}" class="fb-button btn btn-primary"><i class="fas fa-blog"></i> <span class="down-mobile">Read more..</span></a>
+                                                                </div><!-- end media -->
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+                                                    </div><!-- end row -->
+                                                </div>
+                                                <div id="cat03" class="tabcontent">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_history %}
+                                                                {% for posts in delhi_history %}
+                                                                {% if forloop.counter == 1%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_history %}
+                                                                {% for posts in delhi_history %}
+                                                                {% if forloop.counter == 2%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_history %}
+                                                                {% for posts in delhi_history %}
+                                                                {% if forloop.counter == 3%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:delhi_history_list' %}" class="fb-button btn btn-primary"><i class="fas fa-blog"></i> <span class="down-mobile">Read more..</span></a>
+                                                                </div><!-- end media -->
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+                                                    </div><!-- end row -->
+                                                </div>
+                                                <div id="cat04" class="tabcontent">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_architecture %}
+                                                                {% for posts in delhi_architecture %}
+                                                                {% if forloop.counter == 1%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_architecture %}
+                                                                {% for posts in delhi_architecture %}
+                                                                {% if forloop.counter == 2%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_architecture %}
+                                                                {% for posts in delhi_architecture %}
+                                                                {% if forloop.counter == 3%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:delhi_architecture_list' %}" class="fb-button btn btn-primary"><i class="fas fa-blog"></i> <span class="down-mobile">Read more..</span></a>
+                                                                </div><!-- end media -->
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+                                                    </div><!-- end row -->
+                                                </div>
+                                                <div id="cat05" class="tabcontent">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_places %}
+                                                                {% for posts in delhi_places %}
+                                                                {% if forloop.counter == 1%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_places %}
+                                                                {% for posts in delhi_places %}
+                                                                {% if forloop.counter == 2%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                {% if delhi_places %}
+                                                                {% for posts in delhi_places %}
+                                                                {% if forloop.counter == 3%}
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:admin_post_detail' posts.id %}" title="">
+                                                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                                                        <div class="hovereffect">
+                                                                        </div><!-- end hover -->
+                                                                        <span class="menucat">{{posts.blog_category}}</span>
+                                                                    </a>
+                                                                </div><!-- end media -->
+                                                                <div class="blog-meta">
+                                                                    <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                                                </div><!-- end meta -->
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                <p>Data not found!</p>
+                                                               {% endif %}
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                            <div class="blog-box">
+                                                                <div class="post-media">
+                                                                    <a href="{% url 'HomePage:delhi_places_list' %}" class="fb-button btn btn-primary"><i class="fas fa-blog"></i> <span class="down-mobile">Read more..</span></a>
+                                                                </div><!-- end media -->
+                                                            </div><!-- end blog-box -->
+                                                        </div>
+                                                    </div><!-- end row -->
+                                                </div>
+                                            </div><!-- end tab-details -->
+                                        </div><!-- end mega-menu-content -->
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-pink-hover" href="{% url 'HomePage:health_blog_list'%}">Event</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link color-pink-hover" href="{% url 'HomePage:health_blog_list'%}">Health</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-red-hover" href="{% url 'HomePage:food_blog_list'%}">Food</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-pink-hover" href="{% url 'HomePage:fashion_blog_list'%}">Fashion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover" href="{% url 'HomePage:travel_blog_list'%}">Travel</a>
+                            </li>  
+                           
+                            <li class="nav-item">
+                                <a class="nav-link color-grey-hover" href="{% url 'HomePage:shopping_blog_list'%}">Social Welfare</a>
+                            </li>
+
+                             <li class="nav-item dropdown has-submenu">
+                                {% if user.is_authenticated %}
+                                <a class="nav-link dropdown-toggle" href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.first_name}} {{user.last_name}}</a>
+                                <ul class="dropdown-menu">
+                                     {% if user.userprofileinfo.user_profile_image %}
+                                    <li><a href="{% url 'HomePage:author_profile_detail' user.id%}" class="dropdown-item"><img src="{{user.userprofileinfo.user_profile_image.url}}" class="rounded" width="30" height="30"> Home</a></li>
+                                    {% else %}
+                                    <img src="{% static 'HomePage/images/blank_user_image.png'%}" alt="" class="img-fluid rounded-circle">
+                                    {% endif %}
+                                    <li><a href="{% url 'HomePage:user_profile'%}" class="dropdown-item"><i class="fas fa-blog"></i> Profile</a></li>
+                                    <li><a href="{% url 'HomePage:list_blog'%}" class="dropdown-item"><i class="fas fa-check-circle"></i> Published</a></li>
+                                    <li><a href="{% url 'HomePage:author_unpublished_list'%}" class="dropdown-item"><i class="fas fa-times-circle"></i> Draft</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="{% url 'HomePage:logout'%}" class="dropdown-item"><i class="fa fa-unlock"></i> Logout</a></li>
+                                </ul>
+
+                                {% else %}
+                                 <li><a class="nav-link color-grey-hover" href="{% url 'HomePage:login'%}"> Login</a></li>
+                                {% endif %}                        
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- end container -->
+        </header><!-- end header -->
+        
+
+        {% block body_block %}
+        
+        
+
+
+
+
+
+
+
+
+        {% endblock %}
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <h2 class="widget-title">Recent Posts</h2>
+                            <div class="blog-list-widget">
+                                <div class="list-group">
+                                  {% if recent_data %}
+                                  {% for posts in recent_data %}
+                               <a href="{% url 'HomePage:detail_blog' posts.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid float-left">
+                                            <h5 class="mb-1">{{posts.blog_heading|slice:":35"|safe}}...</h5>
+                                            <small>{{posts.blog_post_date}} by {{posts.user}}</small>
+
+                                        </div>
+                                    </a>
+                                    {% endfor %}
+                                    {% else %}
+                                    <p>Data not found!</p>
+                                    {% endif %}
+                                </div>
+                            </div><!-- end blog-list -->
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <h2 class="widget-title">Popular Posts</h2>
+                            <div class="blog-list-widget">
+                                <div class="list-group">
+                                    {% if popular_posts %}
+                                    {% for posts in popular_posts %}
+                                    <a href="{% url 'HomePage:detail_blog' posts.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="w-100 justify-content-between">
+                                             <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid float-left">
+                                            <h5 class="mb-1">{{posts.blog_heading|slice:":35"|safe}}...</h5>
+                                            <span class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                    </a>
+                                    {% endfor %}
+                                    {% else %}
+                                    <p>Data not found!</p>
+                                    {% endif %}
+                                </div>
+                            </div><!-- end blog-list -->
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <h2 class="widget-title">Popular Categories</h2>
+                            <div class="link-widget">
+                                <ul>
+                                    <li><a href="{% url 'HomePage:delhi_shades_list' %}">Delhi Shades <span>{{delhi_shades_count}}</span></a></li>
+                                    <li><a href="{% url 'HomePage:fashion_blog_list' %}">Fashion <span>{{fashion_count}}</span></a></li>
+                                    <li><a href="{% url 'HomePage:food_blog_list' %}">Food <span>{{food_count}}</span></a></li>
+                                    <li><a href="{% url 'HomePage:travel_blog_list' %}">Travel <span>{{travel_count}}</span></a></li>
+                                    <li><a href="{% url 'HomePage:health_blog_list' %}">Health and Fitness <span>{{healthfitness_count}}</span></a></li>
+                                    <li><a href="{% url 'HomePage:shopping_blog_list' %}">Shopping <span>{{shopping_count}}</span></a></li>
+                                    <li><a href="{% url 'HomePage:event_blog_list' %}">Education <span>{{education_count}}</span></a></li>
+                                    <li><a href="{% url 'HomePage:social_blog_list' %}">Social Responsibility <span>{{social_count}}</span></a></li>
+                                </ul>
+                            </div><!-- end link-widget -->
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="invis1">
+
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="widget">
+                            <div class="footer-text text-center">
+                                <a href="index.html"><img src="{% static 'HomePage/images/flogo.png' %}" alt="" class="img-fluid"></a>
+                                <p>Delhi Shades is a personal blog for handcrafted, cameramade photography content, fashion styles from independent creatives around the world.</p>
+                                <div class="social">
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                                </div>
+
+                                <hr class="invis">
+
+                                <div class="newsletter-widget text-center">
+                                    <form class="form-inline">
+                                        <input type="text" class="form-control" placeholder="Enter your email address">
+                                        <button type="submit" class="btn btn-primary">Subscribe <i class="fa fa-envelope-open-o"></i></button>
+                                    </form>
+                                </div><!-- end newsletter -->
+                            </div><!-- end footer-text -->
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <br>
+                        <div class="copyright">&copy; Delhi Shades. Design: <a href="http://html.design">HTML Design</a>.</div>
+                    </div>
+                </div>
+            </div><!-- end container -->
+        </footer><!-- end footer -->
+
+        <div class="dmtop">Scroll to Top</div>
+        
+    </div><!-- end wrapper -->
+
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="{% static 'HomePage/js/jquery.min.js' %}"></script>
+    <script src="{% static 'HomePage/js/tether.min.js' %}"></script>
+    <script src="{% static 'HomePage/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'HomePage/js/custom.js' %}"></script>
+    
+
+</body>
+</html>

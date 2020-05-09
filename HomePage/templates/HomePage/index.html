@@ -1,0 +1,635 @@
+{% extends 'HomePage/base_home.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block body_block %}
+        
+    {% load static %}
+
+<section class="section first-section">
+            <div class="container-fluid">
+                <div class="masonry-blog clearfix">
+                    <div class="left-side">
+                       {% if heading_page_event %}
+                       {% for posts in heading_page_event %}
+                        <div class="masonry-box post-media">
+                             <a href="{% url 'HomePage:admin_post_detail' posts.id %}"><img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid"></a>
+                                <div class="shadow-desc">
+                                    <div class="blog-meta">
+                                        <span class="bg-aqua"><a href="blog-category-01.html" title="">{{posts.blog_category}}</a></span>
+                                       <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}}...</a></h4>
+                                        <small><font size="2">{{posts.blog_post_date}}</font></small>
+                                        <small>by {{posts.super_user_name}}</small>
+                                    </div><!-- end meta -->
+                                </div><!-- end shadow-desc -->
+                        </div><!-- end post-media -->
+                        {% endfor %}
+                        {% else %}
+                        <p>Data not found!</p>
+                       {% endif %}
+                    </div><!-- end left-side -->
+
+                    <div class="center-side">
+                        <div class="masonry-box post-media">
+                               {% if heading_page_fashion %}
+                               {% for posts in heading_page_fashion %}
+                                <div class="masonry-box post-media">
+                                     <a href="{% url 'HomePage:admin_post_detail' posts.id %}"><img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid"></a>
+                                        <div class="shadow-desc">
+                                            <div class="blog-meta">
+                                                <span class="bg-aqua">{{posts.blog_category}}</span>
+                                                <h4>{{posts.blog_heading|slice:":30"|safe}} ...</h4>
+                                                <small>{{posts.blog_post_date}}</small>
+                                                <small>by {{posts.super_user_name}}</small>
+                                            </div><!-- end meta -->
+                                        </div><!-- end shadow-desc -->
+                                </div><!-- end post-media -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                               {% endif %}
+                                 
+                            </div><!-- end post-media -->
+
+                        <div class="masonry-box small-box post-media">
+                             {% if heading_page_travel %}
+                               {% for posts in heading_page_travel %}
+                                <div class="masonry-box post-media">
+                                     <a href="{% url 'HomePage:admin_post_detail' posts.id %}"><img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid"></a>
+                                        <div class="shadow-desc">
+                                            <div class="blog-meta">
+                                                <span class="bg-aqua"><a href="blog-category-01.html" title="">{{posts.blog_category}}</a></span>
+                                                <h4><a href="single.html" title="">{{posts.blog_heading|slice:":25"|safe}} ...</a></h4>
+                                                
+                                            </div><!-- end meta -->
+                                        </div><!-- end shadow-desc -->
+                                </div><!-- end post-media -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                               {% endif %}
+                        </div><!-- end post-media -->
+
+                        <div class="masonry-box small-box post-media">
+                               {% if heading_page_food %}
+                               {% for posts in heading_page_food %}
+                                <div class="masonry-box post-media">
+                                     <a href="{% url 'HomePage:admin_post_detail' posts.id %}"><img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid"></a>
+                                        <div class="shadow-desc">
+                                            <div class="blog-meta">
+                                                 <span class="bg-aqua"><a href="blog-category-01.html" title="">{{posts.blog_category}}</a></span>
+                                                <h4><a href="single.html" title="">{{posts.blog_heading|slice:":25"|safe}} ...</a></h4>
+                                            </div><!-- end meta -->
+                                        </div><!-- end shadow-desc -->
+                                </div><!-- end post-media -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                               {% endif %}
+                        </div><!-- end post-media -->
+                    </div><!-- end left-side -->
+
+                    <div class="right-side hidden-md-down">
+                        <div class="masonry-box post-media">
+                             {% if heading_page_health %}
+                             {% for posts in heading_page_health %}
+                             <a href="{% url 'HomePage:admin_post_detail' posts.id %}"><img src="{% static 'HomePage/upload/blog_masonry_05.jpg' %}" alt="" class="img-fluid"></a>
+                                <div class="shadow-desc">
+                                    <div class="blog-meta">
+                                         <span class="bg-aqua"><a href="blog-category-01.html" title="">{{posts.blog_category}}</a></span>
+                                         <h4><a href="single.html" title="">{{posts.blog_heading|slice:":30"|safe}} ...</a></h4>
+                                         <small><a href="single.html" title="">{{posts.blog_post_date}}</a></small>
+                                         <small><a href="blog-author.html" title="">by {{posts.super_user_name}}</a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end shadow-desc -->
+                             {% endfor %}
+                             {% else %}
+                             <p>Data not found!</p>
+                             {% endif %}
+                        </div><!-- end post-media -->
+                    </div><!-- end right-side -->
+                </div><!-- end masonry -->
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Delhi Shades</a></h3>
+                        </div><!-- end title -->
+                        {% if delhi_shades %}
+                        {% for posts in delhi_shades %}
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="blog-box">
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                            <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                        </a>
+                                    </div><!-- end media -->
+                                    <div class="blog-meta big-meta">
+                                        <h4>{{posts.blog_heading|slice:":25"|safe}}...</h4>
+                                        <p>{{posts.blog_paragraph_1|slice:":50"|safe}}....</p>
+                                        <small>{{posts.blog_post_date}}</small>
+                                        <small>{{posts.user}}</small>
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                        {% endfor %}
+                        {% else %}
+                        <p>Data not found!</p>
+                        {% endif %}
+                    </div><!-- end col -->
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Fashion</a></h3>
+                        </div><!-- end title -->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="blog-box">
+                                    {% if fashion1 %}
+                                    {% for posts in fashion1 %}
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                            <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                        </a>
+                                    </div><!-- end media -->
+                                    <div class="blog-meta">
+                                         <h4>{{posts.blog_heading|slice:":25"|safe}}...</h4>
+                                        <p>{{posts.blog_paragraph_1|slice:":20"|safe}}....</p>
+                                        <small>{{posts.blog_post_date}}</small>
+                                        <small>{{posts.user}}</small>
+                                    </div><!-- end meta -->
+                                    {% endfor %}
+                                    {% else %}
+                                    <p>Data not found!</p>
+                                    {% endif %}
+                                </div><!-- end blog-box -->
+                            </div><!-- end col -->
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="blog-box">
+                                    {% if fashion2 %}
+                                    {% for posts in fashion2 %}
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                            <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                        </a>
+                                    </div><!-- end media -->
+                                    <div class="blog-meta">
+                                         <h4>{{posts.blog_heading|slice:":25"|safe}}...</h4>
+                                        <p>{{posts.blog_paragraph_1|slice:":20"|safe}}....</p>
+                                        <small>{{posts.blog_post_date}}</small>
+                                        <small>{{posts.user}}</small>
+                                    </div><!-- end meta -->
+                                    {% endfor %}
+                                    {% else %}
+                                    <p>Data not found!</p>
+                                    {% endif %}
+                                </div><!-- end blog-box -->
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="invis1">
+
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="banner-spot clearfix">    
+                        <div class="banner-img">
+                          {% if center_banner %}
+                          {% for ad in center_banner %}
+                          {% if forloop.counter == 1 %}
+                          <a href="{{ad.ad_link}}"><img src="{{ad.ad_image.url}}" alt="" class="img-fluid"></a>
+                          {% endif %}
+                          {% endfor %}
+                          {% else %}
+                          <p>Data not found!</p>
+                          {% endif %}
+                        </div><!-- end banner-img -->
+                     
+                        </div><!-- end banner -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="invis1">
+
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="blog-list clearfix">
+                            <div class="section-title">
+                                <h3 class="color-grey"><a href="blog-category-01.html" title="">Travel</a></h3>
+                            </div><!-- end title -->
+                            <div class="blog-box row">
+                                {% if travel %}
+                                {% for posts in travel %}
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                            <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media -->
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                    <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                    <small>{{posts.blog_category}}</small>
+                                    <small>{{posts.blog_post_date}}</small>
+                                    <small>{{posts.user}}</small>
+                                </div><!-- end meta -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                                {% endif %}
+                            </div><!-- end blog-box -->
+                        </div><!-- end blog-list -->
+
+                        <hr class="invis">
+
+                        <div class="blog-list clearfix">
+                            <div class="section-title">
+                                <h3 class="color-grey"><a href="blog-category-01.html" title="">Food</a></h3>
+                            </div><!-- end title -->
+
+                            <div class="blog-box row">
+                                {% if food %}
+                                {% for posts in food %}
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media --><br>
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                    <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                    <small>{{posts.blog_category}}</small>
+                                    <small>{{posts.blog_post_date}}</small>
+                                    <small>{{posts.user}}</small>
+                                </div><!-- end meta -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                                {% endif %}
+                            </div><!-- end blog-box -->
+                        </div><!-- end blog-list -->
+
+                            <hr class="invis">
+                            <div class="blog-list clearfix">
+                            <div class="section-title">
+                                <h3 class="color-grey"><a href="blog-category-01.html" title="">Education</a></h3>
+                            </div><!-- end title -->
+
+                            <div class="blog-box row">
+                                {% if education %}
+                                {% for posts in education %}
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media --><br>
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                    <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                    <small>{{posts.blog_category}}</small>
+                                    <small>{{posts.blog_post_date}}</small>
+                                    <small>{{posts.user}}</small>
+                                </div><!-- end meta -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                                {% endif %}
+                            </div><!-- end blog-box -->
+                        </div><!-- end blog-list -->
+                        <hr class="invis">
+                        <div class="blog-list clearfix">
+                            <div class="section-title">
+                                <h3 class="color-grey"><a href="blog-category-01.html" title="">Lifestyle</a></h3>
+                            </div><!-- end title -->
+                            <div class="blog-box row">
+                                {% if lifestyle %}
+                                {% for posts in lifestyle %}
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media --><br>
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                    <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                    <small>{{posts.blog_category}}</small>
+                                    <small>{{posts.blog_post_date}}</small>
+                                    <small>{{posts.user}}</small>
+                                </div><!-- end meta -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                                {% endif %}
+                            </div><!-- end blog-box -->
+                        </div><!-- end blog-list -->
+                        <hr class="invis">
+                        <div class="blog-list clearfix">
+                            <div class="section-title">
+                                <h3 class="color-grey"><a href="blog-category-01.html" title="">News</a></h3>
+                            </div><!-- end title -->
+
+                            <div class="blog-box row">
+                                {% if news %}
+                                {% for posts in news %}
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media --><br>
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                    <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                    <small>{{posts.blog_category}}</small>
+                                    <small>{{posts.blog_post_date}}</small>
+                                    <small>{{posts.user}}</small>
+                                </div><!-- end meta -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                                {% endif %}
+                            </div><!-- end blog-box -->
+                        </div><!-- end blog-list -->
+                        <hr class="invis">
+                        <div class="blog-list clearfix">
+                            <div class="section-title">
+                                <h3 class="color-grey"><a href="blog-category-01.html" title="">Social Welfare</a></h3>
+                            </div><!-- end title -->
+
+                            <div class="blog-box row">
+                                {% if social %}
+                                {% for posts in social %}
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                        <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media --><br>
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                    <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                    <small>{{posts.blog_category}}</small>
+                                    <small>{{posts.blog_post_date}}</small>
+                                    <small>{{posts.user}}</small>
+                                </div><!-- end meta -->
+                                {% endfor %}
+                                {% else %}
+                                <p>Data not found!</p>
+                                {% endif %}
+                            </div><!-- end blog-box -->
+                        </div><!-- end blog-list -->
+                        <hr class="invis">
+                    </div><!-- end col -->
+
+                    <div class="col-lg-3">
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Health</a></h3>
+                        </div><!-- end title -->
+
+                        <div class="blog-box">
+                            {% if healthfitness %}
+                            {% for posts in healthfitness %}
+                            <div class="post-media">
+                                <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                    <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                    <div class="hovereffect">
+                                        <span class="videohover"></span>
+                                    </div><!-- end hover -->
+                                </a>
+                            </div><!-- end media -->
+                            <div class="blog-meta">
+                                <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                <small><a href="single.html" title="">{{posts.blog_post_date}}</a></small>
+                                <small><a href="blog-author.html" title="">by {{posts.user}}</a></small>
+                            </div><!-- end meta -->
+                            {% endfor %}
+                            {% else %}
+                            <p>Data not found!</p>
+                            {% endif %}
+                        </div><!-- end blog-box -->
+                        <hr class="invis">
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Shopping</a></h3>
+                        </div><!-- end title -->
+
+                        <div class="blog-box">
+                            {% if healthfitness %}
+                            {% for posts in healthfitness %}
+                            <div class="post-media">
+                                <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                    <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                    <div class="hovereffect">
+                                        <span class="videohover"></span>
+                                    </div><!-- end hover -->
+                                </a>
+                            </div><!-- end media -->
+                            <div class="blog-meta">
+                                <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                <small><a href="single.html" title="">{{posts.blog_post_date}}</a></small>
+                                <small><a href="blog-author.html" title="">by {{posts.user}}</a></small>
+                            </div><!-- end meta -->
+                            {% endfor %}
+                            {% else %}
+                            <p>Data not found!</p>
+                            {% endif %}
+                        </div><!-- end blog-box -->
+
+                        
+
+                        <hr class="invis">
+
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Technology</a></h3>
+                        </div><!-- end title -->
+
+                        <div class="blog-box">
+                            {% if technology %}
+                            {% for posts in technology %}
+                            <div class="post-media">
+                                <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                    <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                    <div class="hovereffect">
+                                        <span></span>
+                                    </div><!-- end hover -->
+                                </a>
+                            </div><!-- end media -->
+                            <div class="blog-meta">
+                                 <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                <small><a href="single.html" title="">{{posts.blog_post_date}}</a></small>
+                                <small><a href="blog-author.html" title="">by {{posts.user}}</a></small>
+                            </div><!-- end meta -->
+                            {% endfor %}
+                            {% else %}
+                            <p>Data not found!</p>
+                            {% endif %}
+                        </div><!-- end blog-box -->
+                        <hr class="invis">
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Politics</a></h3>
+                        </div><!-- end title -->
+
+                        <div class="blog-box">
+                            {% if politics %}
+                            {% for posts in politics %}
+                            <div class="post-media">
+                                <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                    <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                    <div class="hovereffect">
+                                        <span></span>
+                                    </div><!-- end hover -->
+                                </a>
+                            </div><!-- end media -->
+                            <div class="blog-meta">
+                                 <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                <small><a href="single.html" title="">{{posts.blog_post_date}}</a></small>
+                                <small><a href="blog-author.html" title="">by {{posts.user}}</a></small>
+                            </div><!-- end meta -->
+                            {% endfor %}
+                            {% else %}
+                            <p>Data not found!</p>
+                            {% endif %}
+                        </div><!-- end blog-box -->
+                        <hr class="invis">
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Books</a></h3>
+                        </div><!-- end title -->
+
+                        <div class="blog-box">
+                            {% if book %}
+                            {% for posts in book %}
+                            <div class="post-media">
+                                <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                    <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                    <div class="hovereffect">
+                                        <span></span>
+                                    </div><!-- end hover -->
+                                </a>
+                            </div><!-- end media -->
+                            <div class="blog-meta">
+                                 <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                <small><a href="single.html" title="">{{posts.blog_post_date}}</a></small>
+                                <small><a href="blog-author.html" title="">by {{posts.user}}</a></small>
+                            </div><!-- end meta -->
+                            {% endfor %}
+                            {% else %}
+                            <p>Data not found!</p>
+                            {% endif %}
+                        </div><!-- end blog-box -->
+                        <hr class="invis">
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Games</a></h3>
+                        </div><!-- end title -->
+
+                        <div class="blog-box">
+                            {% if gaming %}
+                            {% for posts in gaming %}
+                            <div class="post-media">
+                                <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                    <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                    <div class="hovereffect">
+                                        <span></span>
+                                    </div><!-- end hover -->
+                                </a>
+                            </div><!-- end media -->
+                            <div class="blog-meta">
+                                 <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                <small><a href="single.html" title="">{{posts.blog_post_date}}</a></small>
+                                <small><a href="blog-author.html" title="">by {{posts.user}}</a></small>
+                            </div><!-- end meta -->
+                            {% endfor %}
+                            {% else %}
+                            <p>Data not found!</p>
+                            {% endif %}
+                        </div><!-- end blog-box -->
+                        <hr class="invis">
+                        <div class="section-title">
+                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Others</a></h3>
+                        </div><!-- end title -->
+
+                        <div class="blog-box">
+                            {% if others %}
+                            {% for posts in others %}
+                            <div class="post-media">
+                                <a href="{% url 'HomePage:detail_blog' posts.id %}" title="">
+                                    <img src="{{posts.blog_photo_1.url}}" alt="" class="img-fluid">
+                                    <div class="hovereffect">
+                                        <span></span>
+                                    </div><!-- end hover -->
+                                </a>
+                            </div><!-- end media -->
+                            <div class="blog-meta">
+                                 <h4>{{posts.blog_heading|slice:":35"|safe}}...</h4>
+                                <p>{{posts.blog_paragraph_1|slice:":100"|safe}}....</p>
+                                <small><a href="single.html" title="">{{posts.blog_post_date}}</a></small>
+                                <small><a href="blog-author.html" title="">by {{posts.user}}</a></small>
+                            </div><!-- end meta -->
+                            {% endfor %}
+                            {% else %}
+                            <p>Data not found!</p>
+                            {% endif %}
+                        </div><!-- end blog-box -->
+                        <hr class="invis">
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="invis1">
+
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="banner-spot clearfix">
+                            <div class="banner-img">
+                              {% if center_banner %}
+                              {% for ad in center_banner %}
+                              {% if forloop.counter == 2 %}
+                              <a href="{{ad.ad_link}}"><img src="{{ad.ad_image.url}}" alt="" class="img-fluid"></a>
+                              {% endif %}
+                              {% endfor %}
+                              {% else %}
+                              <p>Data not found!</p>
+                              {% endif %}
+                            </div><!-- end banner-img -->
+                        </div><!-- end banner -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+                
+            </div><!-- end container -->
+        </section>
+
+{% endblock %}
